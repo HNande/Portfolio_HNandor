@@ -1,13 +1,25 @@
 * {
   font-size: 1.2em;
   font-family: 'Times New Roman', Times, serif;
+  margin: 0;
+  box-sizing: border-box;
+
 }
 
+.grid{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
+
+}
+.grid > div{
+  text-align: center;
+  padding: 10px;
+  border: 1px solid black;
+
+}
 .container {
   display: flex;
-}
-.container > header{
-  display:flex;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -21,12 +33,13 @@
 
 }
 
-
-body {
+#donut {
     background-color: #f0f0f0;
-}
-
-#donut{
-text-align: center;
-background-repeat: repeat-y;
+    background-image:url(images/donut.gif);
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    background-size:auto;
+    padding: 5px;
+  
+    background-attachment: fixed;
 }
