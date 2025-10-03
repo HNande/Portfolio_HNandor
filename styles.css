@@ -33,12 +33,21 @@
 }
 .container {
   display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-around;
 }
+
+.container-item{
+  flex-grow: 1;
+}
+
 #profile{
 
   max-width: 60%;
   border-radius: 50%;
   height: auto;
+  padding: 15px;
 
 
 
@@ -46,22 +55,25 @@
 
 @media only screen and (max-width: 1024px) {
 
+
 }
 
 @media only screen and (min-width: 768px) {
+
 }
 
 @media only screen and (min-width: 375px) {
 
+
 }
 
 #donut {
-    background-color: #f0f0f0;
-    background-image:url(images/donut.gif);
-    background-position: bottom right;
-    background-repeat: no-repeat;
-    background-size:auto;
-    padding: 5px;
+  background-image:url(images/donut.gif);
+  background-color: #f0f0f0;
+  background-position: bottom right;
+  background-repeat: no-repeat;
+  background-size:auto;
+  padding: 10px;
   
-    background-attachment: fixed;
+    background-attachment:local;
 }
