@@ -1,13 +1,21 @@
+/*
+Self Feedback:
+A lot classes were overcomplicated
+I honestly should have used child element combinators more 
+Should have started with mobile layout, then worked my way up instead of the desktop layout
+*/
+
 * {
-  font-size: 1.1em;
+  font-size: 1.1em; /*Increases font size relative to font family */
   font-family: 'Times New Roman', Times, serif;
   margin: 0;
-  box-sizing: border-box;
 }
 
 .grid{
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(600px, 1fr)); 
+  /*pattern repetition, automatically collapse empty columns if there is not enough items
+  useful for responsive layout*/
   padding: 10px;
   gap: 20px;
 
@@ -20,6 +28,14 @@
   align-items: start;
 
 }
+.cvgrid{
+  display: grid;
+  grid-template-columns:auto auto auto;
+  padding: 10px;
+  gap: 20px;
+
+}
+
 .cell {
   align-self: center;
   background-color: rgb(119, 192, 255)
@@ -28,8 +44,8 @@
 .format{
 font-family:'Courier New', Courier;
 font-weight: bold;
-word-spacing: 0%;
-text-indent: 10px; /*Undoes the work of p, since we don't want that in the cv headings */
+word-spacing:normal;
+text-indent: 10px; /*Undoes the work of the p selector, since we don't want that 20px indent in the cv headings */
 
 }
 h1{
@@ -43,37 +59,74 @@ h1{
 .grid > div{
   text-align: center;
   border: 1px solid black;
+  background-color: aliceblue;
+  opacity: 95%;
 
 }
 .projectsgrid > div{
   text-align: center;
   border: 1px solid black;
   border-radius: 10%;
-
 }
 a{ /*Decreases the font size of links*/
 font-size: 1em;
-
 }
 
 p{
-  text-align: justify;
+  text-align: start;
   text-indent: 40px;
   padding: 10px;
 
 }
-
+aside{
+  display: flex;
+  flex-direction: column;
+  align-content: flex-end;
+}
 .container {
   display: flex;
-  flex-wrap: wrap;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
 }
 
 .container-item{
   flex-grow: 1;
+  border: 1px solid black;  
+}
+
+.sidebar{
+    flex-grow: 1;
+    width: auto;;
+  border: 1px solid black;  
+  background-color: aliceblue;
+  border-radius: 5%;
+
+
+}
+.container-itemcv1{
+  flex-grow: 1;
+  align-self: flex-start;
   border: 1px solid black;
-  
+  max-width: 1000px;  
+  max-height: 150px;
+  padding: 10px;
+  background-color: aliceblue;
+}
+.container-itemcv2{
+  flex-grow: 2;
+  border: 1px solid black;  
+  max-width: 1500px;
+  background-color: aliceblue;
+
+}
+.responsibility{
+  font-family:'Times New Roman', Times, serif;
+  text-decoration: underline;
+  text-align: center;
+}
+li{
+font-family:monospace;
 }
 span{
 background-color: aliceblue;
@@ -82,11 +135,12 @@ border: 1px solid black;
 
 }
 
-#heading{
+.heading{
   text-align: center;
+  padding-top: 10px;
 
 }
-#profile{
+.profile{
 
   max-width: 60%;
   border-radius: 10%; /*for nice clean image edges*/
@@ -98,57 +152,35 @@ footer{
 padding: 0px;
 text-align: center;
 }
-#picture{
-
-  max-width: 60%;
-  border-radius: 10%; 
-  height: 800px;
-  padding: 15px;
-}
-#projectpicture{
+.picture{
+    max-height: 100%;
   max-width: 100%;
+  border-radius: 10%; 
+  object-fit: contain;
+  
+}
+.projectpicture{
+  max-width: 90%;
   max-height: 100%;
   border-radius: 20%; 
   padding: 15px;
   object-fit: contain; 
-  /*Makes it so that the image remains within the cells bounds without messing up structure */
   
 }
 
-@media only screen and (max-width: 1024px) {
-  #background {
-  background-image:url(images/donut.gif);
-  background-color: #f0f0f0;
-  background-position: bottom right;
-  background-repeat: repeat-y;
-  background-size:contain;
-  padding: 10px;
-}
-
-}
-
-@media only screen and (min-width: 768px) {
-
-}
-
-@media only screen and (min-width: 375px) {
-
-
-}
 nav{
   font-size: 1.8em;
   background-color: gray;
   padding: 10px;
 
 }
-#donut {
-  background-image:url(images/donut.gif);
+#lights {
+  background-image:url(images/lights.gif);
   background-color: #f0f0f0;
   background-position: bottom right;
-  background-repeat: no-repeat;
-  background-size:auto;
+  background-repeat: repeat-y;
+  background-size:contain;
   padding: 10px;
-  background-attachment:local;
 }
 #background {
   background-image:url(images/signalis_logo.gif);
@@ -157,4 +189,122 @@ nav{
   background-repeat: repeat-y;
   background-size:contain;
   padding: 10px;
+}
+/*I tested all media queries, I apologize for the redundant code, didnt need to change many values in the end*/
+@media(max-width: 1024px) {
+* {
+  font-size: 1.01em; /*Increases font size relative to parent element, useful for responsive designs*/
+  font-family: 'Times New Roman', Times, serif;
+  margin: 0;
+}
+ .grid{
+  display: grid;
+  grid-template-columns:auto;
+  grid-template-rows: auto;
+  padding: 10px;
+  gap: 20px;
+}
+.projectsgrid{
+  display: grid;
+  grid-template-columns: auto;
+  padding: 10px;
+  gap: 20px;
+  align-items: start;
+
+}
+.projectpicture{
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 20%; 
+  padding: 0px;
+  object-fit: contain; 
+}
+
+}
+
+@media(max-width: 768px) {
+  * {
+  font-size: 1.01em; /*Increases font size relative to parent element, useful for responsive designs*/
+  font-family: 'Times New Roman', Times, serif;
+  margin: 0;
+}
+ .grid{
+  display: grid;
+  grid-template-columns:auto;
+  grid-template-rows: auto;
+  padding: 10px;
+  gap: 20px;
+}
+.projectsgrid{
+  display: grid;
+  grid-template-columns: auto;
+  padding: 10px;
+  gap: 20px;
+  align-items: start;
+
+}
+.projectpicture{
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 20%; 
+  padding: 0px;
+  object-fit: contain; 
+  
+}
+
+}
+
+@media(max-width: 375px) {
+  * {
+  font-size: 1.01em; /*Increases font size relative to parent element, useful for responsive designs*/
+  font-family: 'Times New Roman', Times, serif;
+  margin: 0;
+}
+ .grid{
+  display: grid;
+  grid-template-columns:auto;
+  grid-template-rows: auto;
+  padding: 10px;
+  gap: 20px;
+}
+.projectsgrid{
+  display: grid;
+  grid-template-columns: auto;
+  padding: 10px;
+  gap: 20px;
+  align-items: start;
+}
+
+.sidebar{
+    width: 355px;
+    height: 100px;
+  border: 1px solid black;  
+  background-color: aliceblue;
+}
+.container-itemcv1{
+  flex-grow: 1;
+  align-self: flex-start;
+  border: 1px solid black;
+  max-width: 1000px;  
+  max-height: 150px;
+  padding: 10px;
+  background-color: aliceblue;
+}
+.container-itemcv2{
+  flex-grow: 2;
+  border: 1px solid black;  
+  max-width: 1500px;
+  background-color: aliceblue;
+}
+.cvgrid{
+  display: grid;
+  grid-template-columns:auto;
+  padding: 10px;
+  gap: 20px;
+}
+ul{
+  text-align: start;
+}
+
+
 }
